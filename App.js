@@ -72,7 +72,6 @@ const ButtomCustom = ({color, text}) => {
           width: '100%',
           bottom:80
         }}>
-          <TextInputCustom name="Name" color="black"/>
           <TextInputCustom name="Email" color="black"/>
           <TextInputCustom name="Password" color="black"/>
         </View>
@@ -97,6 +96,35 @@ const ButtomCustom = ({color, text}) => {
           <ButtomCustom color="green" text="SIGN UP"/>
         </View>
 
+        <View style={{
+          alignSelf:'center',
+        }}>
+          <Text style={{
+            color: 'black',
+            fontSize:15,
+            bottom: 50
+          }}>
+            Or sign up with social account
+          </Text>
+
+          <View style={{
+            flexDirection:'row',
+            columnGap: 20,
+            alignSelf: 'center',
+            bottom: 50
+          }}>
+              <Image source={require('./assets/img/google.png')} style={{
+                width: 30,
+                height: 50,
+                resizeMode: 'contain',
+              }}/>
+              <Image source={require('./assets/img/facebook.png')} style={{
+                width: 30,
+                height: 50,
+                resizeMode: 'contain',
+              }}/>
+            </View>
+        </View>
     </View>
   )
 }

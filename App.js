@@ -60,9 +60,18 @@ const ButtomCustom = ({color, text}) => {
           fontWeight: 'bold',
           color: 'black',
         }}>
-          Sign Up
+          Forgot Password
         </Text>
         </View>
+
+        <Text style={{
+          paddingHorizontal: 15,
+          fontSize:14,
+          width: '100%',
+          bottom:50
+        }}>
+          Please, enter your email address. You will receive a link to create a new password via email.
+        </Text>
 
         <View style={{
           flex : 1,
@@ -73,7 +82,6 @@ const ButtomCustom = ({color, text}) => {
           bottom:80
         }}>
           <TextInputCustom name="Email" color="black"/>
-          <TextInputCustom name="Password" color="black"/>
         </View>
 
         <View style={{
@@ -81,9 +89,6 @@ const ButtomCustom = ({color, text}) => {
           right: 20,
           bottom: 70
         }}>
-          <Text>
-            Already have an account?
-          </Text>
         </View>
 
         <View style={{
@@ -91,39 +96,9 @@ const ButtomCustom = ({color, text}) => {
           justifyContent: 'flex-end',
           alignItems: 'center',
           width: '100%',
-          bottom:150
+          bottom:250
         }}>
-          <ButtomCustom color="green" text="SIGN UP"/>
-        </View>
-
-        <View style={{
-          alignSelf:'center',
-        }}>
-          <Text style={{
-            color: 'black',
-            fontSize:15,
-            bottom: 50
-          }}>
-            Or sign up with social account
-          </Text>
-
-          <View style={{
-            flexDirection:'row',
-            columnGap: 20,
-            alignSelf: 'center',
-            bottom: 50
-          }}>
-              <Image source={require('./assets/img/google.png')} style={{
-                width: 30,
-                height: 50,
-                resizeMode: 'contain',
-              }}/>
-              <Image source={require('./assets/img/facebook.png')} style={{
-                width: 30,
-                height: 50,
-                resizeMode: 'contain',
-              }}/>
-            </View>
+          <ButtomCustom color="green" text="SEND"/>
         </View>
     </View>
   )

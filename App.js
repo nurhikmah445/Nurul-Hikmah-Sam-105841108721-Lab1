@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
 import React from 'react';
 
 const ButtomCustom = ({color, text}) => (
@@ -19,6 +19,23 @@ const ButtomCustom = ({color, text}) => (
   </View>
 )
 
+const TextInputCustom = ({ name, color}) => (
+  <TextInput
+  placeholder={`Maukkan ${name}`}
+  style={{
+    borderColor:'gray',
+    width:'90%',
+    height:50,
+    marginBottom:10,
+    paddingHorizontal:10,
+    color:color,
+    backgroundColor:'white',
+    borderWidth:1 
+  }}
+  placeholderTextColor={color}
+  />
+)
+
 const App = () => {
   return (
     <View style={{
@@ -26,7 +43,9 @@ const App = () => {
       justifyContent:'center',
       alignItems:'center',
     }}>
-      <Text>Halo deck</Text>
+      <TextInputCustom name={'Name'} color={'gray'} />
+      <TextInputCustom name={'Email'} color={'gray'} />
+      <TextInputCustom name={'Password'} color={'gray'} />
       <ButtomCustom color={'red'} text={'SEND'} />
       
     </View>

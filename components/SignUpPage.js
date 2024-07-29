@@ -41,7 +41,7 @@ const ButtomCustom = ({color, text}) => {
   )
   }
   
-  const App = () => {
+  const SignUpPage = () => {
   return (
     <View style={{
       flex: 1,
@@ -101,4 +101,4 @@ const ButtomCustom = ({color, text}) => {
   )
 }
 
-export default App
+export default SignUpPage

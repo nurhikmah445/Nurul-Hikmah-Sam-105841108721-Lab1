@@ -1,147 +1,72 @@
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
+import TextInputCustom from "./TextInput";
+import ButtonCustom from "./ButtonCustom";
 
-const TextInputCustom = ({name, color, secureTextEntry}) => {
+const LoginPage = ({ navigation }) => {
   return (
-  <TextInput
-  placeholder={` ${name}`}
-  secureTextEntry={secureTextEntry}
-  style={{
-    height: 64,
-    borderColor: 'gray',
-    color: color,
-    width: '90%',
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    <View style={styles.container}>
+      <Image source={require('../assets/img/logobidanku 1.png')} style={styles.logo} />
+      <Text style={styles.headerText}>Login</Text>
+      <Text style={styles.text}>Silahkan Login Dengan Akun Anda</Text>
+
+      <View style={styles.form}>
+        <TextInputCustom name={"Email"} />
+        <TextInputCustom name={"Password"} />
+        <ButtonCustom color={'green'} text={'LOGIN'} onPress={() => navigation.navigate('MainMenu')} />
+      </View>
+      <Text style={styles.text2}>Lupa Password? <Text style={{color: 'blue'}} onPress={() => navigation.navigate('ForgotPasswordPage')}>Klik Disini</Text></Text>
+
+      <Text style={styles.footerText} onPress={() => navigation.navigate('SignUpPage')}>
+        Belum Punya Akun? Klik Login
+      </Text>
+    </View>
+  )
+}
+
+const styles=StyleSheet.create({
+  container: {
+    flex: 1,
     backgroundColor: 'white',
-    shadowColor: 'black',
-    shadowRadius: 1,
-    shadowOpacity: 0.5,
-  }}
-  />
-)
-}
-
-
-const ButtomCustom = ({color, text}) => {
-  return (
-  <View style={{
-    backgroundColor: color,
-    width: '90%',
-    borderRadius: 20,
-    justifyContent: 'center',
-    height: 50,
     alignItems: 'center',
-  }}>
-      <Text style={{
-        color: 'white',
-        textAlign: 'center',
-      }}>{text}</Text>
-    </View>
-  )
-  }
-  
-  const LoginPage = ({navigation}) => {
-  return (
-    <View style={{
-      flex: 1,
-      backgroundColor: '#F5F5F5',
-      padding: 20,
-    }}>
-      <View style={{
-        flex: 1,
-        justifyContent: 'flex-start',
-        width: '100%',
-        top: 30
-      }}>
-        <Text style={{
-          alignItems: 'flex-start',
-          fontSize: 30,
-          fontWeight: 'bold',
-          color: 'black',
-        }}>
-          Login
-        </Text>
-        </View>
+    justifyContent: 'center',
+    padding: 20
+  },
 
-        <View style={{
-          flex : 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignSelf: 'center',
-          width: '100%',
-          bottom:40,
-        }}>
-          <TextInputCustom name="Email" color="black"/>
-          <TextInputCustom name="Password" color="black"/>
-        </View>
+  logo: {
+    width: 150,
+    height: 150,
+    bottom: 90,
+    resizeMode: 'contain'
+  },
 
-        <TouchableOpacity onPress={() => navigation.navigate('ForgotPasswordPage')} style={{
-            alignSelf:'flex-end',
-            right: 20,
-            flex : 1,
-            bottom: 30
-          }}>
-          <Text>
-            Forgot Password?
-          </Text>
-          </TouchableOpacity>
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    bottom: 50,
+  },
 
-          <TouchableOpacity onPress={() => navigation.navigate('MyTabs')}>
-        <View style={{
-          flex: 1,
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          width: '100%',
-          bottom:150
-        }}>
-          
-          <ButtomCustom color="green" text="LOGIN"/>
-        </View>
-          </TouchableOpacity>
+  text: {
+    fontSize: 16,
+    bottom: 40,
+    textAlign: 'flex-start',
+  },
 
-          <TouchableOpacity onPress={() => navigation.navigate('SignUpPage')}>
-            <Text style={{
-              color: 'black',
-              fontSize:14,
-              bottom: 120,
-              alignSelf: 'center'
-            }}>
-              Don't have an account? Sign Up
-            </Text>
-          </TouchableOpacity>
+  text2: {
+    fontSize: 16,
+  },
 
-        <View style={{
-          alignSelf:'center',
-        }}>
-          <Text style={{
-            color: 'black',
-            fontSize:15,
-            bottom: 50
-          }}>
-            Or sign up with social account
-          </Text>
+  form: {
+    width: '100%',
+    alignItems: 'center'
+  },
 
-          <View style={{
-            flexDirection:'row',
-            columnGap: 20,
-            alignSelf: 'center',
-            bottom: 50
-          }}>
-              <Image source={require('../assets/img/google.png')} style={{
-                width: 30,
-                height: 50,
-                resizeMode: 'contain',
-              }}/>
-              <Image source={require('../assets/img/facebook.png')} style={{
-                width: 30,
-                height: 50,
-                resizeMode: 'contain',
-              }}/>
-            </View>
-        </View>
-    </View>
-  )
-}
+  footerText: {
+    marginTop: 40,
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center'
+  },
+});
 
-export default LoginPage
+export default LoginPage;

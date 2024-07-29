@@ -11,15 +11,12 @@ const BerandaPage = ({navigation}) => {
       padding: 30,
     }}>  
 
-    <Text style={{
-      fontSize: 30,
-      fontWeight: 'bold',
-      color: 'black',
-      marginBottom: 20
-    }}>
-      Bidanku
-    </Text>
-
+    <Image source={require('../assets/img/logobidanku 1.png')} style={{
+      width: 150,
+      height: 150,
+      marginBottom: 20,
+      resizeMode: 'contain'
+    }}/>
     <Image source={require('../assets/img/hero.png')} style={{
       width: 150,
       height: 150,

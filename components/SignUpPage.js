@@ -1,134 +1,62 @@
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
+import TextInputCustom from "./TextInput";
+import ButtonCustom from "./ButtonCustom";
 
-const TextInputCustom = ({name, color, secureTextEntry}) => {
+const SignUpPage = ({ navigation }) => {
   return (
-  <TextInput
-  placeholder={` ${name}`}
-  secureTextEntry={secureTextEntry}
-  style={{
-    height: 64,
-    borderColor: 'gray',
-    color: color,
-    width: '90%',
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    <View style={styles.container}>
+      <Image source={require('../assets/img/logobidanku 1.png')} style={styles.logo} />
+      <Text style={styles.headerText}>Ayo Daftar Dulu</Text>
+
+      <View style={styles.form}>
+        <TextInputCustom name={"Nama"} />
+        <TextInputCustom name={"Email"} />
+        <TextInputCustom name={"Password"} />
+        <ButtonCustom color={'green'} text={'DAFTAR'} onPress={() => navigation.navigate('LoginPage')} />
+      </View>
+
+      <Text style={styles.footerText} onPress={() => navigation.navigate('LoginPage')}>
+        Sudah Punya Akun? Klik Login
+      </Text>
+    </View>
+  )
+}
+
+const styles=StyleSheet.create({
+  container: {
+    flex: 1,
     backgroundColor: 'white',
-    shadowColor: 'black',
-    shadowRadius: 1,
-    shadowOpacity: 0.5,
-  }}
-  />
-)
-}
-
-
-const ButtomCustom = ({color, text}) => {
-  return (
-  <View style={{
-    backgroundColor: color,
-    width: '90%',
-    borderRadius: 20,
-    justifyContent: 'center',
-    height: 50,
     alignItems: 'center',
-  }}>
-      <Text style={{
-        color: 'white',
-        textAlign: 'center',
-      }}>{text}</Text>
-    </View>
-  )
-  }
-  
-  const SignUpPage = ({navigation}) => {
-  return (
-    <View style={{
-      flex: 1,
-      backgroundColor: '#F5F5F5',
-      padding: 20,
-    }}>
-      <View style={{
-        flex: 1,
-        justifyContent: 'flex-start',
-        width: '100%',
-        top: 30
-      }}>
-        <Text style={{
-          alignItems: 'flex-start',
-          fontSize: 30,
-          fontWeight: 'bold',
-          color: 'black',
-        }}>
-          Sign Up
-        </Text>
-        </View>
+    justifyContent: 'center',
+    padding: 20
+  },
 
-        <View style={{
-          flex : 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignSelf: 'center',
-          width: '100%',
-          minHeight: 200,
-          bottom:30,
-        }}>
-          <TextInputCustom name="Name" color="black"/>
-          <TextInputCustom name="Email" color="black"/>
-          <TextInputCustom name="Password" color="black"/>
-        </View>
+  logo: {
+    width: 150,
+    height: 150,
+    bottom: 90,
+    resizeMode: 'contain'
+  },
 
-          <TouchableOpacity onPress={() => navigation.navigate('LoginPage')} style={{
-            alignSelf:'flex-end',
-            right: 20,
-            flex : 1,
-            bottom: 30
-          }}>
-          <Text>
-            Already have an account?
-          </Text>
-          </TouchableOpacity>
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    bottom: 50,
+    textAlign: 'flex-start',
+  },
 
-        <View style={{
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          width: '100%',
-          bottom:120
-        }}>
-          <ButtomCustom color="green" text="SIGN UP"/>
-        </View>
+  form: {
+    width: '100%',
+    alignItems: 'center'
+  },
 
-        <View style={{
-          alignSelf:'center',
-        }}>
-          <Text style={{
-            color: 'black',
-            fontSize:15,
-            bottom: 50
-          }}>
-            Or sign up with social account
-          </Text>
+  footerText: {
+    marginTop: 20,
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center'
+  },
+});
 
-          <View style={{
-            flexDirection:'row',
-            columnGap: 20,
-            alignSelf: 'center',
-            bottom: 50
-          }}>
-              <Image source={require('../assets/img/google.png')} style={{
-                width: 30,
-                height: 50,
-                resizeMode: 'contain',
-              }}/>
-              <Image source={require('../assets/img/facebook.png')} style={{
-                width: 30,
-                height: 50,
-                resizeMode: 'contain',
-              }}/>
-            </View>
-        </View>
-    </View>
-  )
-}
-
-export default SignUpPage
+export default SignUpPage;

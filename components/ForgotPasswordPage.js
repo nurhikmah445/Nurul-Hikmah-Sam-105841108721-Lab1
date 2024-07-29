@@ -1,107 +1,55 @@
-import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
-import React from 'react'
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
+import TextInputCustom from "./TextInput";
+import ButtonCustom from "./ButtonCustom";
 
-const TextInputCustom = ({name, color, secureTextEntry}) => {
+const ForgotPasswordPage = ({ navigation }) => {
   return (
-  <TextInput
-  placeholder={` ${name}`}
-  secureTextEntry={secureTextEntry}
-  style={{
-    height: 64,
-    borderColor: 'gray',
-    color: color,
-    width: '90%',
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    <View style={styles.container}>
+      <Image source={require('../assets/img/logobidanku 1.png')} style={styles.logo} />
+      <Text style={styles.headerText}>Reset Password</Text>
+
+      <View style={styles.form}>
+        <TextInputCustom name={"Email"} />
+        <TextInputCustom name={"New Password"} />
+        <ButtonCustom color={'green'} text={'SEND'} onPress={() => navigation.navigate('MyTabs')} />
+      </View>
+      <Text style={styles.text2}>Bukan Akun Anda? <Text style={{color: 'blue'}} onPress={() => navigation.navigate('LoginPage')}>Klik Disini</Text></Text>
+
+    </View>
+  )
+}
+
+const styles=StyleSheet.create({
+  container: {
+    flex: 1,
     backgroundColor: 'white',
-    shadowColor: 'black',
-    shadowRadius: 1,
-    shadowOpacity: 0.5,
-  }}
-  />
-)
-}
-
-
-const ButtomCustom = ({color, text}) => {
-  return (
-  <View style={{
-    backgroundColor: color,
-    width: '90%',
-    borderRadius: 20,
-    justifyContent: 'center',
-    height: 50,
     alignItems: 'center',
-  }}>
-      <Text style={{
-        color: 'white',
-        textAlign: 'center',
-      }}>{text}</Text>
-    </View>
-  )
-  }
-  
-  const ForgotPasswordPage = () => {
-  return (
-    <View style={{
-      flex: 1,
-      backgroundColor: '#F5F5F5',
-      padding: 20,
-    }}>
-      <View style={{
-        flex: 1,
-        justifyContent: 'flex-start',
-        width: '100%',
-        top: 30
-      }}>
-        <Text style={{
-          alignItems: 'flex-start',
-          fontSize: 30,
-          fontWeight: 'bold',
-          color: 'black',
-        }}>
-          Forgot Password
-        </Text>
-        </View>
+    justifyContent: 'center',
+    padding: 20
+  },
 
-        <Text style={{
-          paddingHorizontal: 15,
-          fontSize:14,
-          width: '100%',
-          bottom:50
-        }}>
-          Please, enter your email address. You will receive a link to create a new password via email.
-        </Text>
+  logo: {
+    width: 150,
+    height: 150,
+    bottom: 90,
+    resizeMode: 'contain'
+  },
 
-        <View style={{
-          flex : 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignSelf: 'center',
-          width: '100%',
-          bottom:80
-        }}>
-          <TextInputCustom name="Email" color="black"/>
-        </View>
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    bottom: 50,
+  },
 
-        <View style={{
-          alignSelf:'flex-end',
-          right: 20,
-          bottom: 70
-        }}>
-        </View>
+  text2: {
+    fontSize: 16,
+  },
 
-        <View style={{
-          flex: 1,
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          width: '100%',
-          bottom:250
-        }}>
-          <ButtomCustom color="green" text="SEND"/>
-        </View>
-    </View>
-  )
-}
+  form: {
+    width: '100%',
+    alignItems: 'center'
+  },
+});
 
-export default ForgotPasswordPage
+export default ForgotPasswordPage;

@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 const TextInputCustom = ({name, color, secureTextEntry}) => {
@@ -41,7 +41,7 @@ const ButtomCustom = ({color, text}) => {
   )
   }
   
-  const LoginPage = () => {
+  const LoginPage = ({navigation}) => {
   return (
     <View style={{
       flex: 1,
@@ -70,21 +70,22 @@ const ButtomCustom = ({color, text}) => {
           alignItems: 'center',
           alignSelf: 'center',
           width: '100%',
-          bottom:80
+          bottom:40,
         }}>
           <TextInputCustom name="Email" color="black"/>
           <TextInputCustom name="Password" color="black"/>
         </View>
 
-        <View style={{
-          alignSelf:'flex-end',
-          right: 20,
-          bottom: 70
-        }}>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPasswordPage')} style={{
+            alignSelf:'flex-end',
+            right: 20,
+            flex : 1,
+            bottom: 30
+          }}>
           <Text>
-            Already have an account?
+            Forgot Password?
           </Text>
-        </View>
+          </TouchableOpacity>
 
         <View style={{
           flex: 1,
@@ -113,12 +114,12 @@ const ButtomCustom = ({color, text}) => {
             alignSelf: 'center',
             bottom: 50
           }}>
-              <Image source={require('./assets/img/google.png')} style={{
+              <Image source={require('../assets/img/google.png')} style={{
                 width: 30,
                 height: 50,
                 resizeMode: 'contain',
               }}/>
-              <Image source={require('./assets/img/facebook.png')} style={{
+              <Image source={require('../assets/img/facebook.png')} style={{
                 width: 30,
                 height: 50,
                 resizeMode: 'contain',

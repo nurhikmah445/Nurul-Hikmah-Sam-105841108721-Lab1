@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 const TextInputCustom = ({name, color, secureTextEntry}) => {
@@ -41,7 +41,7 @@ const ButtomCustom = ({color, text}) => {
   )
   }
   
-  const SignUpPage = () => {
+  const SignUpPage = ({navigation}) => {
   return (
     <View style={{
       flex: 1,
@@ -70,29 +70,30 @@ const ButtomCustom = ({color, text}) => {
           alignItems: 'center',
           alignSelf: 'center',
           width: '100%',
-          bottom:80
+          minHeight: 200,
+          bottom:30,
         }}>
           <TextInputCustom name="Name" color="black"/>
           <TextInputCustom name="Email" color="black"/>
           <TextInputCustom name="Password" color="black"/>
         </View>
 
-        <View style={{
-          alignSelf:'flex-end',
-          right: 20,
-          bottom: 70
-        }}>
+          <TouchableOpacity onPress={() => navigation.navigate('LoginPage')} style={{
+            alignSelf:'flex-end',
+            right: 20,
+            flex : 1,
+            bottom: 30
+          }}>
           <Text>
             Already have an account?
           </Text>
-        </View>
+          </TouchableOpacity>
 
         <View style={{
-          flex: 1,
           justifyContent: 'flex-end',
           alignItems: 'center',
           width: '100%',
-          bottom:150
+          bottom:120
         }}>
           <ButtomCustom color="green" text="SIGN UP"/>
         </View>
@@ -114,12 +115,12 @@ const ButtomCustom = ({color, text}) => {
             alignSelf: 'center',
             bottom: 50
           }}>
-              <Image source={require('./assets/img/google.png')} style={{
+              <Image source={require('../assets/img/google.png')} style={{
                 width: 30,
                 height: 50,
                 resizeMode: 'contain',
               }}/>
-              <Image source={require('./assets/img/facebook.png')} style={{
+              <Image source={require('../assets/img/facebook.png')} style={{
                 width: 30,
                 height: 50,
                 resizeMode: 'contain',

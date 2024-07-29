@@ -1,30 +1,45 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
 
 const MainMenu = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image source={require('../../assets/img/logobidanku 1.png')} style={styles.logo} />
             <Text style={styles.welcomeText}>Selamat Datang Di Menu Utama</Text>
-            <Text style={styles.greetingText}>Halo, Hikmah</Text>
 
+            <View style={styles.userInfo}>
+            <Text style={styles.greetingText}>Halo, <Text style={{fontWeight:'bold'}}>Hikmah</Text></Text>
+
+
+            <View style={styles.searchBar}>
+                <Text style={styles.searchBarText}>Halo, Hikmah</Text>
+                <FontAwesome name='search' size={24} color='black' />
+                </View>
+            </View>
+
+            <Text style={styles.headerText}>Silahkan Pilih Menu Yang Diinginkan</Text>
             <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Immunization')}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Imunisasi')}>
+                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Imunisasi</Text>
                 </TouchableOpacity>
-                
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Medicine')}>
+
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Obat')}>
+                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Obat</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('MedicalHistory')}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('RiwayatBerobat')}>
+                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Riwayat Berobat</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Profile')}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('DataPasien')}>
+                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Data Pasien</Text>
-                </TouchableOpacity>
-            </View>
+                    </TouchableOpacity>
+        </View>
         </View>
     )
 }
@@ -35,14 +50,14 @@ const styles=StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20
+        padding: 20,
     },
 
     logo: {
         width: 150,
-        height: 150,
-        bottom: 90,
-        resizeMode: 'contain'
+        height: 50,
+        resizeMode: 'contain',
+        marginBottom: 20,
     },
 
     welcomeText: {
@@ -52,31 +67,61 @@ const styles=StyleSheet.create({
         marginBottom: 10,
     },
 
-    greetingText: {
-        fontSize: 16,
+    userInfo: {
+        width: '100%',
+        alignItems: 'center',
         marginBottom: 20,
-        textAlign: 'center',
+    },
+
+    greetingText: {
+        fontSize: 18,
+        marginBottom: 10,
+    },
+
+    searchBar: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'lightgrey',
+        padding: 10,
+        borderRadius: 10,
+        width: '100%',
+    },
+
+    searchBarText: {
+        flex: 1,
+        fontSize: 16,
     },
 
     menu: {
         width: '100%',
-        alignItems: 'center',
+        flexDirection:'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
     },
 
     menuItem: {
-        width: '90%',
+        width: '35%',
         backgroundColor: 'green',
-        marginBottom: 20,
-        borderRadius: 20,
-        justifyContent: 'center',
+        borderRadius: 10,
         alignItems: 'center',
+        marginBottom: 40,
+        aspectRatio: 1,
+        justifyContent: 'center',
+        top:30
     },
 
     menuText: {
-        fontSize: 18,
+        fontSize: 10,
         padding: 10,
         color: 'white'
-    }
+    },
+
+    menuIcon: {
+        width: 50,
+        height: 50,
+        resizeMode: 'contain',
+        marginBottom: 10,
+    },
 })
 
 export default MainMenu;

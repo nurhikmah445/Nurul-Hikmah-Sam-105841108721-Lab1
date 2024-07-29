@@ -87,6 +87,7 @@ const ButtomCustom = ({color, text}) => {
           </Text>
           </TouchableOpacity>
 
+          <TouchableOpacity onPress={() => navigation.navigate('MyTabs')}>
         <View style={{
           flex: 1,
           justifyContent: 'flex-end',
@@ -94,8 +95,21 @@ const ButtomCustom = ({color, text}) => {
           width: '100%',
           bottom:150
         }}>
+          
           <ButtomCustom color="green" text="LOGIN"/>
         </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('SignUpPage')}>
+            <Text style={{
+              color: 'black',
+              fontSize:14,
+              bottom: 120,
+              alignSelf: 'center'
+            }}>
+              Don't have an account? Sign Up
+            </Text>
+          </TouchableOpacity>
 
         <View style={{
           alignSelf:'center',

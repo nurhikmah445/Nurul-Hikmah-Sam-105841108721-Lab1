@@ -1,53 +1,42 @@
-import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
-import React from 'react';
-
-const ButtomCustom = ({color, text}) => (
-  <View style={{
-    backgroundColor:color,
-    width: '90%',
-    height:50,
-    borderRadius:20,
-    justifyContent:'center',
-    alignItems:'center'
-  }}>
-    <Text style={{
-      textAlign:'center',
-      fontSize:15,
-      color:'white',
-    }}> {text}
-    </Text>
-  </View>
-)
-
-const TextInputCustom = ({ name, color}) => (
-  <TextInput
-  placeholder={`Maukkan ${name}`}
-  style={{
-    borderColor:'gray',
-    width:'90%',
-    height:50,
-    marginBottom:10,
-    paddingHorizontal:10,
-    color:color,
-    backgroundColor:'white',
-    borderWidth:1 
-  }}
-  placeholderTextColor={color}
-  />
-)
+import { View, Text } from 'react-native'
+import React from 'react'
+import { useFonts } from 'expo-font'
 
 const App = () => {
+
+  const [loaded] = useFonts({
+    'MetroBold': require('./assets/fonts/Metropolis-Bold.otf'),
+    'MetroRegular': require('./assets/fonts/Metropolis-Regular.otf'),
+    'MetroMedium': require('./assets/fonts/Metropolis-Medium.otf'),
+    'MetroLight': require('./assets/fonts/Metropolis-Light.otf'),
+    'MetroThin': require('./assets/fonts/Metropolis-Thin.otf'),
+  })
+
+  if (!loaded) return (
+    <View>
+      <Text>Loading...</Text>
+    </View>
+  )
+
   return (
     <View style={{
-      flex:1,
-      justifyContent:'center',
-      alignItems:'center',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
     }}>
-      <TextInputCustom name={'Name'} color={'gray'} />
-      <TextInputCustom name={'Email'} color={'gray'} />
-      <TextInputCustom name={'Password'} color={'gray'} />
-      <ButtomCustom color={'red'} text={'SEND'} />
-      
+      <Text>Hello Word</Text>
+      <Text style={{
+        fontFamily: 'MetroBold',
+      }}>Hello Word</Text>
+      <Text style={{
+        fontFamily: 'MetroRegular',
+      }}>Hello Word</Text>
+      <Text style={{
+        fontFamily: 'MetroMedium',
+      }}>Hello Word</Text>
+      <Text style={{
+        fontFamily: 'MetroLight',
+      }}>Hello Word</Text>
     </View>
   )
 }

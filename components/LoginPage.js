@@ -13,7 +13,7 @@ const LoginPage = ({ navigation }) => {
       <View style={styles.form}>
         <TextInputCustom name={"Email"} />
         <TextInputCustom name={"Password"} />
-        <ButtonCustom color={'green'} text={'LOGIN'} onPress={() => navigation.navigate('MainMenu')} />
+        <ButtonCustom color={'green'} text={'LOGIN'} onPress={() => navigation.navigate('MyTabs')} />
       </View>
       <Text style={styles.text2}>Lupa Password? <Text style={{color: 'blue'}} onPress={() => navigation.navigate('ForgotPasswordPage')}>Klik Disini</Text></Text>
 

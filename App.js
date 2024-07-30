@@ -7,21 +7,28 @@ import ForgotPasswordPage from './components/ForgotPasswordPage';
 import MyTabs from './components/MyTabs';
 import BerandaPage from './components/BerandaPage';
 import MainMenu from './components/mainMenu/MainMenu';
-import Immunization from './components/mainMenu/Immunization';
+import Imunisasi from './components/mainMenu/Imunisasi';
+import Obat from './components/mainMenu/Obat';
+import DataPasien from './components/mainMenu/DataPasien';
+import RiwayatBerobat from './components/mainMenu/RiwayatBerobat';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='MyTabs' screenOptions={{}}>
+      <Stack.Navigator initialRouteName='Beranda' screenOptions={{}}>
         <Stack.Screen name="SignUpPage" component={SignUpPage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="ForgotPasswordPage" component={ForgotPasswordPage} />
-        <Stack.Screen name="MyTabs" component={MyTabs} />
+        <Stack.Screen name="Bidanku" component={MyTabs} />
         <Stack.Screen name="Beranda" component={BerandaPage} />
         <Stack.Screen name="MainMenu" component={MainMenu} />
-        <Stack.Screen name="Immunization" component={Immunization} />
+        <Stack.Screen name="imunisasi" component={Imunisasi} />
+        <Stack.Screen name="obat" component={Obat} />
+        <Stack.Screen name="riwayatBerobat" component={RiwayatBerobat} />
+        <Stack.Screen name="dataPasien" component={DataPasien} />
+        <Stack.Screen name="MyTabs" component={MyTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );

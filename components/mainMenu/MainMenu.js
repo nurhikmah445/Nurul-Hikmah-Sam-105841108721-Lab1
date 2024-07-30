@@ -9,7 +9,6 @@ const MainMenu = ({ navigation }) => {
             <Text style={styles.welcomeText}>Selamat Datang Di Menu Utama</Text>
 
             <View style={styles.userInfo}>
-            <Text style={styles.greetingText}>Halo, <Text style={{fontWeight:'bold'}}>Hikmah</Text></Text>
 
 
             <View style={styles.searchBar}>
@@ -20,23 +19,23 @@ const MainMenu = ({ navigation }) => {
 
             <Text style={styles.headerText}>Silahkan Pilih Menu Yang Diinginkan</Text>
             <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Imunisasi')}>
-                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('imunisasi')}>
+                    <Image source={require('../../assets/img/suntikan.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Imunisasi</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Obat')}>
-                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('obat')}>
+                    <Image source={require('../../assets/img/obat.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Obat</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('RiwayatBerobat')}>
-                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('riwayatBerobat')}>
+                    <Image source={require('../../assets/img/riwayat berobat.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Riwayat Berobat</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('DataPasien')}>
-                    <Image source={require('../../assets/img/hero.png')} style={styles.menuIcon} />
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('dataPasien')}>
+                    <Image source={require('../../assets/img/data pasien.png')} style={styles.menuIcon} />
                     <Text style={styles.menuText}>Data Pasien</Text>
                     </TouchableOpacity>
         </View>
@@ -61,21 +60,16 @@ const styles=StyleSheet.create({
     },
 
     welcomeText: {
-        fontSize: 24,
+        fontSize: 15,
         fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 10,
+        textAlign: 'flex-start',
+        marginBottom: 20,
     },
 
     userInfo: {
         width: '100%',
         alignItems: 'center',
-        marginBottom: 20,
-    },
-
-    greetingText: {
-        fontSize: 18,
-        marginBottom: 10,
+        marginBottom: 15,
     },
 
     searchBar: {
@@ -107,7 +101,7 @@ const styles=StyleSheet.create({
         marginBottom: 40,
         aspectRatio: 1,
         justifyContent: 'center',
-        top:30
+        top:30,
     },
 
     menuText: {
@@ -121,6 +115,8 @@ const styles=StyleSheet.create({
         height: 50,
         resizeMode: 'contain',
         marginBottom: 10,
+        backgroundColor: 'white',
+        borderRadius: 10,
     },
 })
 

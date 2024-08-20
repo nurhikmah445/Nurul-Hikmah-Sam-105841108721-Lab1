@@ -1,123 +1,91 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { FontAwesome } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 
-const MainMenu = ({ navigation }) => {
-    return (
-        <View style={styles.container}>
-            <Image source={require('../../assets/img/logobidanku 1.png')} style={styles.logo} />
-            <Text style={styles.welcomeText}>Selamat Datang Di Menu Utama</Text>
+const ProdukPage = ({ navigation }) => {
+  const [products, setProducts] = useState([]);
 
-            <View style={styles.userInfo}>
+  // Fetch data from external API
+  useEffect(() => {
+    fetch('https://dummyjson.com/products')
+      .then(response => response.json())
+      .then(data => setProducts(data.products))
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
 
+  return (
+    <View style={styles.container}>
+      <Text style={styles.headerText}>Produk Terbaru</Text>
+      
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.productContainer}
+      >
+        {products.map(product => (
+          <TouchableOpacity 
+            key={product.id} 
+            style={styles.productItem} 
+            onPress={() => navigation.navigate('ProductDetail', { productId: product.id })}
+          >
+            <Image source={{ uri: product.thumbnail }} style={styles.productImage} />
+            <Text style={styles.productTitle}>{product.title}</Text>
+            <Text style={styles.productPrice}>Rp {product.price}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
 
-            <View style={styles.searchBar}>
-                <Text style={styles.searchBarText}>Halo, Hikmah</Text>
-                <FontAwesome name='search' size={24} color='black' />
-                </View>
-            </View>
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 20,
+  },
 
-            <Text style={styles.headerText}>Silahkan Pilih Menu Yang Diinginkan</Text>
-            <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('imunisasi')}>
-                    <Image source={require('../../assets/img/suntikan.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Imunisasi</Text>
-                </TouchableOpacity>
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+    color: 'black',
+  },
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('obat')}>
-                    <Image source={require('../../assets/img/obat.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Obat</Text>
-                </TouchableOpacity>
+  productContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('riwayatBerobat')}>
-                    <Image source={require('../../assets/img/riwayat berobat.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Riwayat Berobat</Text>
-                </TouchableOpacity>
+  productItem: {
+    width: 150,
+    marginRight: 20,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    padding: 10,
+    alignItems: 'center',
+  },
 
-                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('dataPasien')}>
-                    <Image source={require('../../assets/img/data pasien.png')} style={styles.menuIcon} />
-                    <Text style={styles.menuText}>Data Pasien</Text>
-                    </TouchableOpacity>
-        </View>
-        </View>
-    )
-}
+  productImage: {
+    width: 120,
+    height: 120,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
 
-const styles=StyleSheet.create({
-    container : {
-        flex: 1,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-    },
+  productTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
+    marginBottom: 5,
+  },
 
-    logo: {
-        width: 150,
-        height: 50,
-        resizeMode: 'contain',
-        marginBottom: 20,
-    },
+  productPrice: {
+    fontSize: 14,
+    color: 'green',
+    textAlign: 'center',
+  },
+});
 
-    welcomeText: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'flex-start',
-        marginBottom: 20,
-    },
-
-    userInfo: {
-        width: '100%',
-        alignItems: 'center',
-        marginBottom: 15,
-    },
-
-    searchBar: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: 'lightgrey',
-        padding: 10,
-        borderRadius: 10,
-        width: '100%',
-    },
-
-    searchBarText: {
-        flex: 1,
-        fontSize: 16,
-    },
-
-    menu: {
-        width: '100%',
-        flexDirection:'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-    },
-
-    menuItem: {
-        width: '35%',
-        backgroundColor: 'green',
-        borderRadius: 10,
-        alignItems: 'center',
-        marginBottom: 40,
-        aspectRatio: 1,
-        justifyContent: 'center',
-        top:30,
-    },
-
-    menuText: {
-        fontSize: 10,
-        padding: 10,
-        color: 'white'
-    },
-
-    menuIcon: {
-        width: 50,
-        height: 50,
-        resizeMode: 'contain',
-        marginBottom: 10,
-        backgroundColor: 'white',
-        borderRadius: 10,
-    },
-})
-
-export default MainMenu;
+export default ProdukPage;
